@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using Ross.Infrastructure;
 using Ross.Windows;
 
@@ -50,6 +52,18 @@ namespace Powers_Of_Five
             _showCorrect = false;
             _showError = false;
         }
+
+        #region View
+
+        private IMainWindow _view;
+
+        public IMainWindow View
+        {
+            get { return _view; }
+            set { SetValueNonTracking(ref _view, value, () => View); }
+        }
+
+        #endregion
 
         protected void SetNextNumber()
         {
@@ -133,6 +147,10 @@ namespace Powers_Of_Five
                 ShowError = true;
                 Error = s;
                 CorrectText = "";
+            }
+            if (View != null)
+            {
+                View.SelectTextboxText();
             }
         }
 

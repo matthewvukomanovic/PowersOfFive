@@ -38,7 +38,9 @@
             FontSize="48"
             Text="{Binding AnswerNumber, UpdateSourceTrigger=PropertyChanged}"
             TextAlignment="Center"
-            MinWidth="100"/>
+            MinWidth="100"
+            Name="AnswerControl"
+            />
         <Button
             Grid.Row="3"
             Command="{Binding CheckAnswer}"

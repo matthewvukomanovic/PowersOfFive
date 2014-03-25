@@ -18,11 +18,27 @@ namespace Powers_Of_Five
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            var vm = DataContext as MainWindowViewModel;
+            if (vm != null)
+            {
+                vm.View = this;
+            }
         }
+
+        public void SelectTextboxText()
+        {
+            AnswerControl.SelectAll();
+        }
+    }
+
+    public interface IMainWindow
+    {
+        void SelectTextboxText();
     }
 }
