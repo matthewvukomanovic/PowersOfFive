@@ -132,6 +132,7 @@ namespace Powers_Of_Five
             var a = new PowerOfFive(AnswerNumber);
             string s = a.Number.ToString() + "^5 = " + a.NumberToTheFifth.ToString("N0");
             //Check the answer
+            TotalAnswered = TotalAnswered + 1;
             if (Number.Number == AnswerNumber)
             {
                 ShowCorrect = true;
@@ -142,6 +143,7 @@ namespace Powers_Of_Five
                 SetNextNumber();
                 CurrentCorrectCount = CurrentCorrectCount + 1;
                 HighestCorrectCount = Math.Max(HighestCorrectCount, CurrentCorrectCount);
+                TotalCorrect = TotalCorrect + 1;
             }
             else
             {
@@ -150,7 +152,12 @@ namespace Powers_Of_Five
                 Error = s;
                 CorrectText = "";
                 CurrentCorrectCount = 0;
+                TotalIncorrect = TotalIncorrect + 1;
             }
+
+            PercentageCorrect = _totalCorrect*100/_totalAnswered;
+            PercentageIncorrect = _totalIncorrect*100/_totalAnswered;
+
             if (View != null)
             {
                 View.SelectTextboxText();
@@ -168,7 +175,6 @@ namespace Powers_Of_Five
         }
 
         #endregion
-
         #region ShowError
 
         private bool _showError = false;
@@ -180,7 +186,6 @@ namespace Powers_Of_Five
         }
 
         #endregion
-
         #region Error
 
         private string _error;
@@ -192,7 +197,6 @@ namespace Powers_Of_Five
         }
 
         #endregion
-        
         #region ShowCorrect
 
         private bool _showCorrect = false;
@@ -204,7 +208,6 @@ namespace Powers_Of_Five
         }
 
         #endregion
-
         #region ShowHelp
 
         private bool _showHelp;
@@ -235,6 +238,66 @@ namespace Powers_Of_Five
         {
             get { return _currentCorrectCount; }
             set { SetValueNonTracking(ref _currentCorrectCount, value, () => CurrentCorrectCount); }
+        }
+
+        #endregion
+
+        #region TotalCorrect
+
+        private long _totalCorrect = 0;
+
+        public long TotalCorrect
+        {
+            get { return _totalCorrect; }
+            set { SetValueNonTracking(ref _totalCorrect, value, () => TotalCorrect); }
+        }
+
+        #endregion
+
+        #region TotalAnswered
+
+        private long _totalAnswered = 0;
+
+        public long TotalAnswered
+        {
+            get { return _totalAnswered; }
+            set { SetValueNonTracking(ref _totalAnswered, value, () => TotalAnswered); }
+        }
+
+        #endregion
+
+        #region PercentageCorrect
+
+        private long _percentageCorrect = 0;
+
+        public long PercentageCorrect
+        {
+            get { return _percentageCorrect; }
+            set { SetValueNonTracking(ref _percentageCorrect, value, () => PercentageCorrect); }
+        }
+
+        #endregion
+
+        #region TotalIncorrect
+
+        private long _totalIncorrect = 0;
+
+        public long TotalIncorrect
+        {
+            get { return _totalIncorrect; }
+            set { SetValueNonTracking(ref _totalIncorrect, value, () => TotalIncorrect); }
+        }
+
+        #endregion
+
+        #region PercentageIncorrect
+
+        private long _percentageIncorrect = 0;
+
+        public long PercentageIncorrect
+        {
+            get { return _percentageIncorrect; }
+            set { SetValueNonTracking(ref _percentageIncorrect, value, () => PercentageIncorrect); }
         }
 
         #endregion
