@@ -17,7 +17,7 @@ namespace Powers_Of_Five
         private readonly Random _random;
         private PowerOfFive _number;
         private bool _showAnswer;
-        private List<long> numbersLeft;
+        private List<long> _numbersLeft;
 
         #region HelpNumbers
 
@@ -67,19 +67,19 @@ namespace Powers_Of_Five
 
         protected void SetNextNumber()
         {
-            if (numbersLeft == null || numbersLeft.Count == 0)
+            if (_numbersLeft == null || _numbersLeft.Count == 0)
             {
-                numbersLeft = new List<long>(99);
+                _numbersLeft = new List<long>(99);
                 for (int i = 0; i < 99; i++)
                 {
-                    numbersLeft.Add(i);
+                    _numbersLeft.Add(i);
                 }
             }
-            var offset = _random.Next(0, numbersLeft.Count - 1);
+            var offset = _random.Next(0, _numbersLeft.Count - 1);
             var original = Number;
             do
             {
-                var offsetNumberToUse = numbersLeft[offset];
+                var offsetNumberToUse = _numbersLeft[offset];
                 Number = _reference.PowersOfFives[offsetNumberToUse];
             } while (Number == original);
         }
@@ -139,7 +139,7 @@ namespace Powers_Of_Five
                 ShowCorrect = true;
 
                 IsCorrect = true;
-                numbersLeft.Remove(a.Number - 1);
+                _numbersLeft.Remove(a.Number - 1);
                 SetNextNumber();
                 CurrentCorrectCount = CurrentCorrectCount + 1;
                 HighestCorrectCount = Math.Max(HighestCorrectCount, CurrentCorrectCount);
