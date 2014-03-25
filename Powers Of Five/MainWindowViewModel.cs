@@ -140,6 +140,8 @@ namespace Powers_Of_Five
                 CorrectText = "Correct: " + s;
                 numbersLeft.Remove(a.Number - 1);
                 SetNextNumber();
+                CurrentCorrectCount = CurrentCorrectCount + 1;
+                HighestCorrectCount = Math.Max(HighestCorrectCount, CurrentCorrectCount);
             }
             else
             {
@@ -147,6 +149,7 @@ namespace Powers_Of_Five
                 ShowError = true;
                 Error = s;
                 CorrectText = "";
+                CurrentCorrectCount = 0;
             }
             if (View != null)
             {
@@ -211,6 +214,30 @@ namespace Powers_Of_Five
             get { return _showHelp; }
             set { SetValueNonTracking(ref _showHelp, value, () => ShowHelp); }
         }
+
+        #region HighestCorrectCount
+
+        private long _highestCorrectCount = 0;
+
+        public long HighestCorrectCount
+        {
+            get { return _highestCorrectCount; }
+            set { SetValueNonTracking(ref _highestCorrectCount, value, () => HighestCorrectCount); }
+        }
+
+        #endregion
+
+        #region CurrentCorrectCount
+
+        private long _currentCorrectCount = 0;
+
+        public long CurrentCorrectCount
+        {
+            get { return _currentCorrectCount; }
+            set { SetValueNonTracking(ref _currentCorrectCount, value, () => CurrentCorrectCount); }
+        }
+
+        #endregion
 
         #endregion
     }
