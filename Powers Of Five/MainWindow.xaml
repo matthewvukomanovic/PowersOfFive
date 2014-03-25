@@ -52,7 +52,7 @@
             Text="{Binding Error}"
             Visibility="{Binding ShowError, Converter={StaticResource b2v}}"
             TextAlignment="Center"
-            MinWidth="100"/>
+            MinWidth="100" Foreground="#FFCD0B0B"/>
         <TextBlock          
             Grid.Row="4"
             HorizontalAlignment="Center"
