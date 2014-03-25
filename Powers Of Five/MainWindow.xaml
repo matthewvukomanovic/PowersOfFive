@@ -10,6 +10,7 @@
     <Window.Resources>
         <local:NumberToStringConverter x:Key="numberToString"/>
         <BooleanToVisibilityConverter x:Key="b2v"/>
+        <local:BoolToBrushConverter x:Key="b2b"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -72,21 +73,26 @@
             Content="Check Answer"
             IsDefault="True"
             />
-        <TextBlock
+        <StackPanel
             Grid.Row="4"
+            Orientation="Horizontal"
             HorizontalAlignment="Center"
-            FontSize="48"
-            Text="{Binding Error}"
-            Visibility="{Binding ShowError, Converter={StaticResource b2v}}"
-            TextAlignment="Center"
-            MinWidth="100" Foreground="#FFCD0B0B"/>
-        <TextBlock          
-            Grid.Row="4"
-            HorizontalAlignment="Center"
-            FontSize="48"
-            Text="{Binding CorrectText}"
-            Visibility="{Binding ShowCorrect, Converter={StaticResource b2v}}"
-            TextAlignment="Center"
-            MinWidth="100"/>
+            >
+            <TextBlock
+                FontSize="48"
+                Text="Correct "
+                Visibility="{Binding ShowCorrect, Converter={StaticResource b2v}}"
+                TextAlignment="Center"
+                MinWidth="100"
+                />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="48"
+                Text="{Binding PowerText}"
+                Visibility="{Binding ShowText, Converter={StaticResource b2v}}"
+                TextAlignment="Center"
+                MinWidth="100"
+                Foreground="{Binding IsCorrect, Converter={StaticResource b2b}, ConverterParameter='Black;Red'}"/>
+        </StackPanel>
     </Grid>
 </Window>

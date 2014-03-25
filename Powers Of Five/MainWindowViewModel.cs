@@ -50,7 +50,7 @@ namespace Powers_Of_Five
             MinNumber = 1;
             MaxNumber = 99;
             _showCorrect = false;
-            _showError = false;
+            _isCorrect = false;
         }
 
         #region View
@@ -130,15 +130,15 @@ namespace Powers_Of_Five
         private void ExecuteCheckAnswer()
         {
             var a = new PowerOfFive(AnswerNumber);
-            string s = a.Number.ToString() + "^5 = " + a.NumberToTheFifth.ToString("N0");
+            ShowText = true;
+            PowerText = a.Number.ToString() + "^5 = " + a.NumberToTheFifth.ToString("N0");
             //Check the answer
             TotalAnswered = TotalAnswered + 1;
             if (Number.Number == AnswerNumber)
             {
                 ShowCorrect = true;
-                ShowError = false;
-                Error = null;
-                CorrectText = "Correct: " + s;
+
+                IsCorrect = true;
                 numbersLeft.Remove(a.Number - 1);
                 SetNextNumber();
                 CurrentCorrectCount = CurrentCorrectCount + 1;
@@ -148,9 +148,7 @@ namespace Powers_Of_Five
             else
             {
                 ShowCorrect = false;
-                ShowError = true;
-                Error = s;
-                CorrectText = "";
+                IsCorrect = false;
                 CurrentCorrectCount = 0;
                 TotalIncorrect = TotalIncorrect + 1;
             }
@@ -164,39 +162,18 @@ namespace Powers_Of_Five
             }
         }
 
-        #region CorrectText
+        #region IsCorrect
 
-        private string _correctText = "";
+        private bool _isCorrect = false;
 
-        public string CorrectText
+        public bool IsCorrect
         {
-            get { return _correctText; }
-            set { SetValue(ref _correctText, value, () => CorrectText); }
+            get { return _isCorrect; }
+            set { SetValue(ref _isCorrect, value, () => IsCorrect); }
         }
 
         #endregion
-        #region ShowError
 
-        private bool _showError = false;
-
-        public bool ShowError
-        {
-            get { return _showError; }
-            set { SetValue(ref _showError, value, () => ShowError); }
-        }
-
-        #endregion
-        #region Error
-
-        private string _error;
-
-        public string Error
-        {
-            get { return _error; }
-            set { SetValue(ref _error, value, () => Error); }
-        }
-
-        #endregion
         #region ShowCorrect
 
         private bool _showCorrect = false;
@@ -301,6 +278,29 @@ namespace Powers_Of_Five
         }
 
         #endregion
+
+        #endregion
+        #region ShowText
+
+        private bool _showText = false;
+
+        public bool ShowText
+        {
+            get { return _showText; }
+            set { SetValue(ref _showText, value, () => ShowText); }
+        }
+
+        #endregion
+
+        #region PowerText
+
+        private string _powerText;
+
+        public string PowerText
+        {
+            get { return _powerText; }
+            set { SetValue(ref _powerText, value, () => PowerText); }
+        }
 
         #endregion
     }
