@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ross.Infrastructure.Core
+namespace Powers_Of_Five.Core
 {
     /// <summary>
     /// Implements abstract Disposable object that provides base implementation plus helpers to check for dispose

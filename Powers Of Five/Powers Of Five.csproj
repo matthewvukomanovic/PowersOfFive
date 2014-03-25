@@ -58,21 +58,11 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\SimpleAsyncCommand.cs" />
     <Compile Include="Commands\SimpleCommand.cs" />
-    <Compile Include="CompositeEntity.cs" />
     <Compile Include="Converters\NumberToStringConverter.cs" />
-    <Compile Include="DatabaseRepresentationAttribute.cs" />
-    <Compile Include="DependentEntity.cs" />
     <Compile Include="Disposable.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="EnumHelper.cs" />
     <Compile Include="Execute.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="ICompositeEntity.cs" />
-    <Compile Include="IDirtyPropertyChanged.cs" />
     <Compile Include="IDisposed.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="IIdentifiable.cs" />
-    <Compile Include="ITrackChanges.cs" />
     <Compile Include="PropertyChangedBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

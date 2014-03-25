@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ross.Infrastructure.Core
+namespace Powers_Of_Five.Core
 {
     public interface IDisposed : IDisposable
     {

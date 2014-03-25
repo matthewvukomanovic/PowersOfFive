@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Ross.Infrastructure;
-using Ross.Windows;
+using Powers_Of_Five.Infrastructure;
+using Powers_Of_Five.Windows;
 
 namespace Powers_Of_Five
 {
@@ -19,14 +19,14 @@ namespace Powers_Of_Five
         private bool _showAnswer;
         private List<long> numbersLeft;
 
-        #region MultiplesOfTen
+        #region HelpNumbers
 
-        private List<string> _multiplesOfTen;
+        private List<string> _helpNumbers;
 
-        public List<string> MultiplesOfTen
+        public List<string> HelpNumbers
         {
-            get { return _multiplesOfTen; }
-            set { SetValueNonTracking(ref _multiplesOfTen, value, () => MultiplesOfTen); }
+            get { return _helpNumbers; }
+            set { SetValue(ref _helpNumbers, value, () => HelpNumbers); }
         }
 
         #endregion
@@ -42,7 +42,7 @@ namespace Powers_Of_Five
                 var v = m.Number + "^5 = " + m.NumberToTheFifth.ToString("N0");
                 list.Add(v);
             }
-            MultiplesOfTen = list;
+            HelpNumbers = list;
             _random = new Random();
             
             SetNextNumber();
@@ -60,7 +60,7 @@ namespace Powers_Of_Five
         public IMainWindow View
         {
             get { return _view; }
-            set { SetValueNonTracking(ref _view, value, () => View); }
+            set { SetValue(ref _view, value, () => View); }
         }
 
         #endregion
@@ -87,13 +87,13 @@ namespace Powers_Of_Five
         public PowerOfFive Number
         {
             get { return _number; }
-            set { SetValueNonTracking(ref _number, value, () => Number); }
+            set { SetValue(ref _number, value, () => Number); }
         }       
         
         public bool ShowAnswer
         {
             get { return _showAnswer; }
-            set { SetValueNonTracking(ref _showAnswer, value, () => ShowAnswer); }
+            set { SetValue(ref _showAnswer, value, () => ShowAnswer); }
         }
 
         private long _answerNumber;
@@ -101,7 +101,7 @@ namespace Powers_Of_Five
         public long AnswerNumber
         {
             get { return _answerNumber; }
-            set { SetValueNonTracking(ref _answerNumber, value, () => AnswerNumber); }
+            set { SetValue(ref _answerNumber, value, () => AnswerNumber); }
         }
 
         private long _maxNumber;
@@ -109,7 +109,7 @@ namespace Powers_Of_Five
         public long MaxNumber
         {
             get { return _maxNumber; }
-            set { SetValueNonTracking(ref _maxNumber, value, () => MaxNumber); }
+            set { SetValue(ref _maxNumber, value, () => MaxNumber); }
         }
 
         private long _minNumber;
@@ -117,7 +117,7 @@ namespace Powers_Of_Five
         public long MinNumber
         {
             get { return _minNumber; }
-            set { SetValueNonTracking(ref _minNumber, value, () => MinNumber); }
+            set { SetValue(ref _minNumber, value, () => MinNumber); }
         }
 
         private SimpleCommand _checkAnswer;
@@ -171,7 +171,7 @@ namespace Powers_Of_Five
         public string CorrectText
         {
             get { return _correctText; }
-            set { SetValueNonTracking(ref _correctText, value, () => CorrectText); }
+            set { SetValue(ref _correctText, value, () => CorrectText); }
         }
 
         #endregion
@@ -182,7 +182,7 @@ namespace Powers_Of_Five
         public bool ShowError
         {
             get { return _showError; }
-            set { SetValueNonTracking(ref _showError, value, () => ShowError); }
+            set { SetValue(ref _showError, value, () => ShowError); }
         }
 
         #endregion
@@ -193,7 +193,7 @@ namespace Powers_Of_Five
         public string Error
         {
             get { return _error; }
-            set { SetValueNonTracking(ref _error, value, () => Error); }
+            set { SetValue(ref _error, value, () => Error); }
         }
 
         #endregion
@@ -204,7 +204,7 @@ namespace Powers_Of_Five
         public bool ShowCorrect
         {
             get { return _showCorrect; }
-            set { SetValueNonTracking(ref _showCorrect, value, () => ShowCorrect); }
+            set { SetValue(ref _showCorrect, value, () => ShowCorrect); }
         }
 
         #endregion
@@ -215,7 +215,7 @@ namespace Powers_Of_Five
         public bool ShowHelp
         {
             get { return _showHelp; }
-            set { SetValueNonTracking(ref _showHelp, value, () => ShowHelp); }
+            set { SetValue(ref _showHelp, value, () => ShowHelp); }
         }
 
         #region HighestCorrectCount
@@ -225,7 +225,7 @@ namespace Powers_Of_Five
         public long HighestCorrectCount
         {
             get { return _highestCorrectCount; }
-            set { SetValueNonTracking(ref _highestCorrectCount, value, () => HighestCorrectCount); }
+            set { SetValue(ref _highestCorrectCount, value, () => HighestCorrectCount); }
         }
 
         #endregion
@@ -237,7 +237,7 @@ namespace Powers_Of_Five
         public long CurrentCorrectCount
         {
             get { return _currentCorrectCount; }
-            set { SetValueNonTracking(ref _currentCorrectCount, value, () => CurrentCorrectCount); }
+            set { SetValue(ref _currentCorrectCount, value, () => CurrentCorrectCount); }
         }
 
         #endregion
@@ -249,7 +249,7 @@ namespace Powers_Of_Five
         public long TotalCorrect
         {
             get { return _totalCorrect; }
-            set { SetValueNonTracking(ref _totalCorrect, value, () => TotalCorrect); }
+            set { SetValue(ref _totalCorrect, value, () => TotalCorrect); }
         }
 
         #endregion
@@ -261,7 +261,7 @@ namespace Powers_Of_Five
         public long TotalAnswered
         {
             get { return _totalAnswered; }
-            set { SetValueNonTracking(ref _totalAnswered, value, () => TotalAnswered); }
+            set { SetValue(ref _totalAnswered, value, () => TotalAnswered); }
         }
 
         #endregion
@@ -273,7 +273,7 @@ namespace Powers_Of_Five
         public long PercentageCorrect
         {
             get { return _percentageCorrect; }
-            set { SetValueNonTracking(ref _percentageCorrect, value, () => PercentageCorrect); }
+            set { SetValue(ref _percentageCorrect, value, () => PercentageCorrect); }
         }
 
         #endregion
@@ -285,7 +285,7 @@ namespace Powers_Of_Five
         public long TotalIncorrect
         {
             get { return _totalIncorrect; }
-            set { SetValueNonTracking(ref _totalIncorrect, value, () => TotalIncorrect); }
+            set { SetValue(ref _totalIncorrect, value, () => TotalIncorrect); }
         }
 
         #endregion
@@ -297,7 +297,7 @@ namespace Powers_Of_Five
         public long PercentageIncorrect
         {
             get { return _percentageIncorrect; }
-            set { SetValueNonTracking(ref _percentageIncorrect, value, () => PercentageIncorrect); }
+            set { SetValue(ref _percentageIncorrect, value, () => PercentageIncorrect); }
         }
 
         #endregion

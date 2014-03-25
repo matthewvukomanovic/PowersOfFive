@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace Ross.Windows
+namespace Powers_Of_Five.Windows
 {
     public class DelegateAsyncCommand<T> : DelegateCommand<T>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-namespace Ross.Windows
+namespace Powers_Of_Five.Windows
 {
     /// <summary>
     /// Provides a bindable command that takes no parameters
