@@ -18,7 +18,6 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -52,29 +51,35 @@
         </UniformGrid>
         <ListBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" ItemsSource="{Binding HelpNumbers}"
                  Visibility="{Binding ShowHelp, Converter={StaticResource b2v}}"/>
-        <TextBlock
-            Grid.Row="1"
-            Text="{Binding Number.NumberToTheFifth, Converter={StaticResource numberToString}, ConverterParameter='N0' }"
-            HorizontalAlignment="Center"
-            FontSize="48"
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBox
+                HorizontalAlignment="Center"
+                FontSize="48"
+                Text="{Binding AnswerNumber, UpdateSourceTrigger=PropertyChanged}"
+                TextAlignment="Center"
+                MinWidth="100"
+                Name="AnswerControl"
             />
-        <TextBox
-            Grid.Row="2"
-            HorizontalAlignment="Center"
-            FontSize="48"
-            Text="{Binding AnswerNumber, UpdateSourceTrigger=PropertyChanged}"
-            TextAlignment="Center"
-            MinWidth="100"
-            Name="AnswerControl"
-            />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="48"
+                MinWidth="370"
+            >
+                ⁵ =
+                <Run Text="{Binding Path=Number.NumberToTheFifth, Mode=OneWay, Converter={StaticResource numberToString}, ConverterParameter='N0' }"/>
+            </TextBlock>
+        </StackPanel>
         <Button
-            Grid.Row="3"
+            Grid.Row="2"
             Command="{Binding CheckAnswer}"
             Content="Check Answer"
             IsDefault="True"
             />
         <StackPanel
-            Grid.Row="4"
+            Grid.Row="3"
             Orientation="Horizontal"
             HorizontalAlignment="Center"
             >

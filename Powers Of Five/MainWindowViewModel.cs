@@ -39,7 +39,7 @@ namespace Powers_Of_Five
             for (int i = 0; i < 10; i++)
             {
                 var m = _reference.PowersOfFives[(i + 1)*10 - 1];
-                var v = m.Number + "^5 = " + m.NumberToTheFifth.ToString("N0");
+                var v = m.Number + "⁵ = " + m.NumberToTheFifth.ToString("N0");
                 list.Add(v);
             }
             HelpNumbers = list;
@@ -131,7 +131,7 @@ namespace Powers_Of_Five
         {
             var a = new PowerOfFive(AnswerNumber);
             ShowText = true;
-            PowerText = a.Number.ToString() + "^5 = " + a.NumberToTheFifth.ToString("N0");
+            PowerText = a.Number.ToString() + "⁵ = " + a.NumberToTheFifth.ToString("N0");
             //Check the answer
             TotalAnswered = TotalAnswered + 1;
             if (Number.Number == AnswerNumber)
